@@ -1,15 +1,33 @@
-# C++ Template
+# C++ Mega Project Template
 [![TraviCI](https://api.travis-ci.com/p-hofmann/Cpp-Template.svg?branch=master)](https://travis-ci.com/p-hofmann/Cpp-Template)
 [![CircleCI](https://circleci.com/gh/p-hofmann/Cpp-Template/tree/master.svg?style=svg)](https://circleci.com/gh/p-hofmann/Cpp-Template/tree/master)  
-A template showcasing the organisational power of cmake + git submodules  
-[C++ template](https://github.com/p-hofmann/Cpp-Template) deals with the issue of organizing a big C++ project.
-In addition to that, 
-this project also includes ways to deal with different operation systems ([Cpp-FileSystem-Emulator](https://github.com/catchorg/Cpp-FileSystem-Emulator)) 
-or even architecture ([Cpp-Template-Sub1-Sub](https://github.com/catchorg/Cpp-Template-Sub1-Sub)).  
+This [template](https://github.com/p-hofmann/Cpp-Template) uses modern tools to organize and test a big C++ project.
+* **Organized**  
+The organisational power of [CMake](https://cmake.org/) and [Git submodul](https://git-scm.com/) allows for a clear folder structure.  
+* **Multi-platform** (Linux, Windows, Darwin)  
+Supporting multiple operation systems causes issues such as preprocessor directives cluttering up your code.
+This template uses a way to reduce such preprocessor directives ([Cpp-FileSystem-Emulator](https://github.com/catchorg/Cpp-FileSystem-Emulator)) using CMake.
+* **Continuous integration** (Travis CI, Circle CI)  
+Testing on ones own machine is an insufficient way testing code meant for multiple platforms.
+Even Continuous Integration sites, like [Circle CI](https://circleci.com/), 
+often only support a limited selection of platforms.  
+Because of that [Travis CI](https://travis-ci.com/) is recommend, which provides images for Linux, OSX and Windows.
+* **Unittests** (Catch2)  
 All modules include unittests using [Catch2](https://github.com/catchorg/Catch2).
-The [Catch2](https://github.com/catchorg/Catch2) source is not included in this repository as expected, but is cloned from the remote repository when the project is build.  
-Continuous integration using [Travis CI](https://travis-ci.com/) is supported. The Code is there tested on Linux, Darwin and Windows OS.
-[Circle CI](https://circleci.com/) is supported, but the Code is tested on Linux only. for now.
+The [Catch2](https://github.com/catchorg/Catch2) source is not included in this repository, 
+but is cloned from the remote repository when the unittests are build.  
+
+Much of the template structure and other parts are from ideas gained from guides 
+and code bits and pieces from [https://stackoverflow.com/](https://stackoverflow.com/).  
+Notable influences are:
+* Guides
+  - [It's Time To Do CMake Right](https://pabloariasal.github.io/2018/02/19/its-time-to-do-cmake-right/) by Pablo Arias
+  - [Effective Modern CMake](https://gist.github.com/mbinna/c61dbb39bca0e4fb7d1f73b0d66a4fd1) by Manuel Binna
+* Travis CI
+  - The config file for [Travis CI](https://travis-ci.com/) is a near identical copy of [Catch2](https://github.com/catchorg/Catch2)'s config, 
+  which does very extensive tests.
+
+This template is by no means perfect or even finished and will expand and improve.
 
 ## Project Layout
 
@@ -57,12 +75,12 @@ but is also its own project and it is debatable if it should be in external or i
   - Unittest files of current module.
 * catch2
   - External project for unittests.
-  - [Catch2](https://github.com/catchorg/Catch2) will be downloaded as part of cmake when run on unittests.
+  - [Catch2](https://github.com/catchorg/Catch2) will be downloaded as part of CMake when run on unittests.
 
 ## Git submodule
 Git submodule is an integral part of this template.
-It is possible to use Cmake's 'ExternalProject' instead, see 'CMakeLists.txt' in the 'tests' folder for an example.  
-Git submodule has been chosen, as fewer maintenance is expected than from a cmake script.
+It is possible to use CMake's 'ExternalProject' instead, see 'CMakeLists.txt' in the 'tests' folder for an example.  
+Git submodule has been chosen, as fewer maintenance is expected than from a CMake script.
 
 ### Git submodule - add
 Use https urls for submodules, the ssh alternative requires a key, 
@@ -89,15 +107,13 @@ git rm -f include/submodule
   - Make sure library is build in addition to Unittests.
     * Maybe use linked library in unittests instead of source.
   - Find out if images of different architectures for each OS are available on travis.
-* Cmake
-  - Make sure all project dependencies are declared.
+* CMake
+  - Make sure all project dependencies are made.
   - 'Install library' configuration example.
   - Prevention of loading a project twice (like done with Catch2).
   - Consider a 'CMakeLists.txt' in 'external', dealing with all external projects.
   - Consider a 'CMakeLists.txt' in 'src', dealing only with the current project.
   - Consider a 'CMakeLists.txt' in 'include', dealing only with submodules of the current project.
-    * Potentially
 * Git
   - Modify template to also work with private git repositories.
   - Add example of SSH instead of Https url to repositories
-  
