@@ -88,6 +88,7 @@ git rm -f include/submodule
   - Use of valgrind in Windows OS setup.
   - Make sure library is build in addition to Unittests.
     * Maybe use linked library in unittests instead of source.
+  - Find out if images of different architectures for each OS are available on travis.
 * Cmake
   - Make sure all project dependencies are declared.
   - 'Install library' configuration example.
