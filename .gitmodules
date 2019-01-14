@@ -1,6 +1,6 @@
 [submodule "include/CPlusPlus-Template-Submodule1"]
-	path = include/CPlusPlus-Template-Submodule1
-	url = git@github.com:p-hofmann/CPlusPlus-Template-Submodule1.git
-[submodule "include/CPlusPlus-Template-Submodule2"]
-	path = include/CPlusPlus-Template-Submodule2
-	url = git@github.com:p-hofmann/CPlusPlus-Template-Submodule2.git
+	path = include/Cpp-Template-Sub1
+	url = https://github.com/p-hofmann/Cpp-Template-Sub1.git
+[submodule "include/Cpp-FileSystem-Emulator"]
+	path = include/Cpp-FileSystem-Emulator
+	url = https://github.com/p-hofmann/Cpp-FileSystem-Emulator.git
