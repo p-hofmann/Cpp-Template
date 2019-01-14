@@ -59,6 +59,30 @@ but is also its own project and it is debatable if it should be in external or i
   - External project for unittests.
   - [Catch2](https://github.com/catchorg/Catch2) will be downloaded as part of cmake when run on unittests.
 
+## Git submodule
+Git submodule is an integral part of this template.
+It is possible to use Cmake's 'ExternalProject' instead, see 'CMakeLists.txt' in the 'tests' folder for an example.  
+Git submodule has been chosen, as fewer maintenance is expected than from a cmake script.
+
+### Git submodule - add
+Use https urls for submodules, the ssh alternative requires a key, 
+which will not exist on the continuous integration platform.
+```
+git submodule add https://github.com/p-hofmann/submodule.git include/submodule
+```
+
+### Git submodule - move/rename
+```
+git mv include/submodule include/submoduleNew
+```
+### Git submodule - delete
+```
+rm -r include/submodule
+git submodule deinit -f -- include/submodule    
+rm -rf .git/modules/include/submodule
+git rm -f include/submodule
+```
+
 ## TODO:
 * Continuous Integration
   - Use of valgrind in Windows OS setup.
@@ -68,3 +92,11 @@ but is also its own project and it is debatable if it should be in external or i
   - Make sure all project dependencies are declared.
   - 'Install library' configuration example.
   - Prevention of loading a project twice (like done with Catch2).
+  - Consider a 'CMakeLists.txt' in 'external', dealing with all external projects.
+  - Consider a 'CMakeLists.txt' in 'src', dealing only with the current project.
+  - Consider a 'CMakeLists.txt' in 'include', dealing only with submodules of the current project.
+    * Potentially
+* Git
+  - Modify template to also work with private git repositories.
+  - Add example of SSH instead of Https url to repositories
+  
