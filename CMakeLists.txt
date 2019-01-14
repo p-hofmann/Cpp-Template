@@ -44,11 +44,22 @@ target_include_directories(DummyMain
     PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
     $<INSTALL_INTERFACE:include>
-    ${CMAKE_CURRENT_SOURCE_DIR}/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/Cpp-Template
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/Cpp-Template-Sub1/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/Cpp-FileSystem-Emulator/include
     PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/src
     )
-
 # Add Unittest
 enable_testing()
 add_subdirectory(tests)
+
+# Add Submodules
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/include/Cpp-Template-Sub1)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/include/Cpp-FileSystem-Emulator)
+
+# Add dependency to submodule libraries
+add_dependencies(DummyMain Cpp_FileSystem_Emulator)
+add_dependencies(DummyMain CppTemplateSub1)
+target_link_libraries(DummyMain Cpp_FileSystem_Emulator)
+target_link_libraries(DummyMain CppTemplateSub1)
