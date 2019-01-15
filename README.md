@@ -93,12 +93,19 @@ git submodule add https://github.com/p-hofmann/submodule.git include/submodule
 ```
 git mv include/submodule include/submoduleNew
 ```
+
 ### Git submodule - delete
 ```
 rm -r include/submodule
 git submodule deinit -f -- include/submodule    
 rm -rf .git/modules/include/submodule
 git rm -f include/submodule
+```
+
+### Git submodule - init submodules of submodules
+After a submodule is added, the submodule's submodules are still empty. Those are cloned with this command:
+```
+git submodule update --init --recursive
 ```
 
 ## TODO:
