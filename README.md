@@ -96,16 +96,20 @@ git mv include/submodule include/submoduleNew
 
 ### Git submodule - delete
 ```
-rm -r include/submodule
+rm -rf include/submodule
 git submodule deinit -f -- include/submodule    
 rm -rf .git/modules/include/submodule
 git rm -f include/submodule
 ```
 
-### Git submodule - init submodules of submodules
-After a submodule is added, the submodule's submodules are still empty. Those are cloned with this command:
+### Git submodule - init submodules
+After a project is cloned, the submodules are still empty. Those are cloned int the sub-folders with this command:
 ```
 git submodule update --init --recursive
+```
+### Git submodule - update submodules to latest version
+```
+git submodule update --remote --merge
 ```
 
 ## TODO:
