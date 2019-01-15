@@ -16,7 +16,7 @@ if (NOT TARGET catch2_project)
         SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../external/Catch2
         GIT_REPOSITORY https://github.com/catchorg/Catch2.git
         GIT_TAG origin/master
-        GIT_SHALLOW 1
+#        GIT_SHALLOW 1
         CONFIGURE_COMMAND ""
         BUILD_COMMAND ""
         INSTALL_COMMAND ""
@@ -74,7 +74,10 @@ target_include_directories(${TEST_PROJECT_NAME}
     PUBLIC
         $<BUILD_INTERFACE:${INCLUDE_LOCATION}>
         $<INSTALL_INTERFACE:include>
-        ${INCLUDE_LOCATION}
+        ${INCLUDE_LOCATION}/Cpp-Template
+        ${INCLUDE_LOCATION}/Cpp-Template-Sub1/include/Cpp-Template-Sub1
+        ${INCLUDE_LOCATION}/Cpp-Template-Sub1/include/Cpp-Template-Sub1-Sub/include
+        ${INCLUDE_LOCATION}/Cpp-FileSystem-Emulator/include
     PRIVATE
         ${SRC_LOCATION}
         ${CATCH2_INCLUDE_DIR}

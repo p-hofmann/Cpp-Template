@@ -45,7 +45,8 @@ target_include_directories(DummyMain
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
     $<INSTALL_INTERFACE:include>
     ${CMAKE_CURRENT_SOURCE_DIR}/include/Cpp-Template
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/Cpp-Template-Sub1/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/Cpp-Template-Sub1/include/Cpp-Template-Sub1
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/Cpp-Template-Sub1/include/Cpp-Template-Sub1/Cpp-Template-Sub1-Sub/include
     ${CMAKE_CURRENT_SOURCE_DIR}/include/Cpp-FileSystem-Emulator/include
     PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/src
