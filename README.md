@@ -3,7 +3,9 @@
 [![CircleCI](https://circleci.com/gh/p-hofmann/Cpp-Template/tree/master.svg?style=svg)](https://circleci.com/gh/p-hofmann/Cpp-Template/tree/master)  
 This [template](https://github.com/p-hofmann/Cpp-Template) uses modern tools to organize and test a big C++ project.
 * **Organized**  
-The organisational power of [CMake](https://cmake.org/) and [Git submodul](https://git-scm.com/) allows for a clear folder structure.  
+The organisational power of [CMake](https://cmake.org/) 
+and [Git submodul](https://git-scm.com/) allows for a improved folder structure.
+Dozens of headers cluttering the include folder can be a thing of the past.  
 * **Multi-platform** (Linux, Windows, Darwin)  
 Supporting multiple operation systems causes issues such as preprocessor directives cluttering up your code.
 This template uses a way to reduce such preprocessor directives ([Cpp-FileSystem-Emulator](https://github.com/catchorg/Cpp-FileSystem-Emulator)) using CMake.
@@ -32,36 +34,31 @@ This template is by no means perfect or even finished and will expand and improv
 ## Project Layout
 
 ├── CMakeLists.txt  
-├── .travis.yml  
-├── .circleci  
-│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── config.yml  
 ├── include  
-│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── Cpp-Template  
-│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── project.h   
-│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── Cpp-Template-Sub1  
-│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── Cpp-FileSystem-Emulator  
-├── libs  
-│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── library.a  
+│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── project.h  
+│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── **Cpp-Template-Sub1**  
+│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── include  
+│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│── project.h  
+│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── **Cpp-Template-Sub1-Sub**  
+│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── **Cpp-FileSystem-Emulator**  
 ├── src  
-│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── project.cpp  
+│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── project.cpp  
+├── libs  
 ├── external  
+│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── CMakeLists.txt  
 │&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── catch2  
 │&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── catch.hpp  
 └── tests  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── CMakeLists.txt  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── test_project.cpp  
 
-* .travis.yml
-  - Configuration file for [Travis CI](https://travis-ci.com/) support.
-* .circleci/config.yml
-  - Configuration file for [Circle CI](https://circleci.com/) support.
-* include/Cpp-Template
+* include/
   - Header location of current module.
-* include/Cpp-Template-Sub1
+* include / Cpp-Template-Sub1
   - Submodule of this module. 
   - Not a third party project and considered part of this build, 
 it is included in the 'include' folder, not the 'external' folder.
-* include/Cpp-FileSystem-Emulator
+* include / Cpp-FileSystem-Emulator
   - Submodule of this module.
   - Part of this project, 
 but is also its own project and it is debatable if it should be in external or include folder.
@@ -76,6 +73,10 @@ but is also its own project and it is debatable if it should be in external or i
 * catch2
   - External project for unittests.
   - [Catch2](https://github.com/catchorg/Catch2) will be downloaded as part of CMake when run on unittests.
+* .travis.yml
+  - Configuration file for [Travis CI](https://travis-ci.com/) support.
+* .circleci/config.yml
+  - Configuration file for [Circle CI](https://circleci.com/) support.
 
 ## Git submodule
 Git submodule is an integral part of this template.
@@ -116,16 +117,13 @@ After this, submodules must be added and committed
 ## TODO:
 * Continuous Integration
   - Use of valgrind in Windows OS setup.
-  - Make sure library is build in addition to Unittests.
+  - Make sure normal library is build in addition to Unittests from source.
     * Maybe use linked library in unittests instead of source.
-  - Find out if images of different architectures for each OS are available on travis.
+  - Find or make images of different architectures for each OS.
 * CMake
-  - Make sure all project dependencies are made.
   - 'Install library' configuration example.
-  - Prevention of loading a project twice (like done with Catch2).
-  - Consider a 'CMakeLists.txt' in 'external', dealing with all external projects.
+  - Prevention of loading a sub project twice (like done with Catch2).
   - Consider a 'CMakeLists.txt' in 'src', dealing only with the current project.
-  - Consider a 'CMakeLists.txt' in 'include', dealing only with submodules of the current project.
 * Git
   - Modify template to also work with private git repositories.
   - Add example of SSH instead of Https url to repositories
