@@ -33,13 +33,15 @@ This template is by no means perfect or even finished and will expand and improv
 
 ## Project Layout
 
+**Cpp-Mega-Project**  
 ├── CMakeLists.txt  
 ├── include  
 │&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── project.h  
 │&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── **Cpp-Template-Sub1**  
-│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── include  
-│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│── project.h  
-│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── **Cpp-Template-Sub1-Sub**  
+│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│ &nbsp;&nbsp;&nbsp;&nbsp;└── include  
+│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│── project.h  
+│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── **Cpp-Template-Sub1-Sub**  
+│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── ...  
 │&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── **Cpp-FileSystem-Emulator**  
 ├── src  
 │&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── project.cpp  
@@ -114,6 +116,12 @@ git submodule update --remote --recursive --merge
 ```
 After this, submodules must be added and committed
 
+## Git submodule criticism
+Working on submodules from a parent project can lead to very bad things happening.
+A forgotten submodule update can easily lead to a detached head and a lot of headaches.
+If I could make them read-only except for updates, I would.
+If working on submodules is wanted, 'git subtree' is worth looking into.
+
 ## TODO:
 * Continuous Integration
   - Use of valgrind in Windows OS setup.
@@ -127,3 +135,4 @@ After this, submodules must be added and committed
 * Git
   - Modify template to also work with private git repositories.
   - Add example of SSH instead of Https url to repositories
+  - Look into 'git subtree'
