@@ -39,6 +39,8 @@ add_library(DummyMain
     ${PLATFORM_DEPENENT_FILES}
     )
 
+# This link will add all public directories used to the current project
+# headers will be known and treated similar to them being local
 target_link_libraries(DummyMain Cpp_FileSystem_Emulator CppTemplateSub1 CppTemplateSub1Sub)
 
 # This will specify for this project only, /src and /include as the folders to look into for files
