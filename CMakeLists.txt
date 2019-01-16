@@ -6,6 +6,16 @@ set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/bin)
 # Have all libraries in the libs folder, all submodules will compile their libraries into there
 set(LIBRARY_OUTPUT_PATH ${CMAKE_CURRENT_SOURCE_DIR}/libs)
 
+add_subdirectory(external)
+
+# Add Unittest
+enable_testing()
+add_subdirectory(tests)
+
+# Add Submodules
+add_subdirectory(include/Cpp-Template-Sub1)
+add_subdirectory(include/Cpp-FileSystem-Emulator)
+
 ##########
 # Main Project
 ##########
@@ -39,28 +49,17 @@ add_library(DummyMain
     ${PLATFORM_DEPENENT_FILES}
     )
 
+target_link_libraries(DummyMain Cpp_FileSystem_Emulator CppTemplateSub1 CppTemplateSub1Sub)
+
 # This will specify for this project only, /src and /include as the folders to look into for files
 target_include_directories(DummyMain
     PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
     $<INSTALL_INTERFACE:include>
     ${CMAKE_CURRENT_SOURCE_DIR}/include/Cpp-Template
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/Cpp-Template-Sub1/include/Cpp-Template-Sub1
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/Cpp-Template-Sub1/include/Cpp-Template-Sub1/Cpp-Template-Sub1-Sub/include
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/Cpp-FileSystem-Emulator/include
     PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/src
     )
-# Add Unittest
-enable_testing()
-add_subdirectory(tests)
-
-# Add Submodules
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/include/Cpp-Template-Sub1)
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/include/Cpp-FileSystem-Emulator)
 
 # Add dependency to submodule libraries
-add_dependencies(DummyMain Cpp_FileSystem_Emulator)
-add_dependencies(DummyMain CppTemplateSub1)
-target_link_libraries(DummyMain Cpp_FileSystem_Emulator)
-target_link_libraries(DummyMain CppTemplateSub1)
+add_dependencies(DummyMain Cpp_FileSystem_Emulator CppTemplateSub1 CppTemplateSub1Sub)
