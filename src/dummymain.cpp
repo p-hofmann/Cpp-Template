@@ -9,5 +9,5 @@ using namespace dummy;
 
 std::string DummyMain::toString()
 {
-    return CppTemplateSub1Sub::toString() + "CWDL: " + filesystem::current_path();
+    return CppTemplateSub1Sub::toString() + ", CWD: '" + filesystem::current_path() +"'";
 }
