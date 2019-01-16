@@ -109,7 +109,7 @@ git submodule update --init --recursive
 ```
 ### Git submodule - update submodules to latest version
 ```
-git submodule update --remote --merge
+git submodule update --remote --recursive --merge
 ```
 
 ## TODO:
