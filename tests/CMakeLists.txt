@@ -35,9 +35,9 @@ endif ()
 
 # Project will be made into an executable
 add_executable(${TEST_PROJECT_NAME}
-    test_dummymainclass.cpp
+    test_dummymain.cpp
     ${PLATFORM_DEPENENT_FILES}
-    ${SRC_LOCATION}/dummymainclass.cpp ${INCLUDE_LOCATION}/Cpp-Template/dummymainclass.h
+    ${SRC_LOCATION}/dummymain.cpp ${INCLUDE_LOCATION}/Cpp-Template/dummymain.h
     )
 
 
