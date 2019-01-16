@@ -82,7 +82,7 @@ but is also its own project and it is debatable if it should be in external or i
 
 ## Git submodule
 Git submodule is an integral part of this template.
-It is possible to use CMake's 'ExternalProject' instead, see 'CMakeLists.txt' in the 'tests' folder for an example.  
+It is possible to use CMake's 'ExternalProject' instead, see 'CMakeLists.txt' in the 'external' folder for an example.  
 Git submodule has been chosen, as fewer maintenance is expected than from a CMake script.
 
 ### Git submodule - add
