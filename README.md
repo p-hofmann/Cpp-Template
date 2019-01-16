@@ -107,10 +107,11 @@ After a project is cloned, the submodules are still empty. Those are cloned int 
 ```
 git submodule update --init --recursive
 ```
-### Git submodule - update submodules to latest version
+### Git submodule - update submodules
 ```
 git submodule update --remote --recursive --merge
 ```
+After this, submodules must be added and committed
 
 ## TODO:
 * Continuous Integration
