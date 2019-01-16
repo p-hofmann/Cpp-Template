@@ -6,16 +6,6 @@ set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/bin)
 # Have all libraries in the libs folder, all submodules will compile their libraries into there
 set(LIBRARY_OUTPUT_PATH ${CMAKE_CURRENT_SOURCE_DIR}/libs)
 
-add_subdirectory(external)
-
-# Add Unittest
-enable_testing()
-add_subdirectory(tests)
-
-# Add Submodules
-add_subdirectory(include/Cpp-Template-Sub1)
-add_subdirectory(include/Cpp-FileSystem-Emulator)
-
 ##########
 # Main Project
 ##########
@@ -45,7 +35,7 @@ endif ()
 # Make a static library
 # As the submodule is not a library of its own, the files will be added
 add_library(DummyMain
-    src/dummymainclass.cpp include/Cpp-Template/dummymainclass.h
+    src/dummymain.cpp include/Cpp-Template/dummymain.h
     ${PLATFORM_DEPENENT_FILES}
     )
 
@@ -63,3 +53,14 @@ target_include_directories(DummyMain
 
 # Add dependency to submodule libraries
 add_dependencies(DummyMain Cpp_FileSystem_Emulator CppTemplateSub1 CppTemplateSub1Sub)
+
+# Add external projects
+add_subdirectory(external)
+
+# Add Submodules
+add_subdirectory(include/Cpp-Template-Sub1)
+add_subdirectory(include/Cpp-FileSystem-Emulator)
+
+# Add Unittest
+enable_testing()
+add_subdirectory(tests)
