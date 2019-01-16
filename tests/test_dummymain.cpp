@@ -40,6 +40,5 @@ TEST_CASE("Test toString", "[DummyMain]")
 {
     DummyMain dummy;
     string testValue = dummy.toString();
-    REQUIRE_MESSAGE(testValue.empty(), "toString returned empty string" << testValue);
-    INFO(testValue);
+    REQUIRE_MESSAGE(!testValue.empty(), "toString returned empty string");
 }
