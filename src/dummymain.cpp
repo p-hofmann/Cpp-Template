@@ -3,7 +3,7 @@
  */
 
 #include "filesystem.h"
-#include "Cpp-Template/dummymain.h"
+#include "dummymain.h"
 
 using namespace dummy;
 

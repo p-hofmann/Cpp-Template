@@ -21,23 +21,23 @@ set(INCLUDE_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/../include)
 
 
 # Gather src files that depending on a specific OS
-if (UNIX)
-    if (APPLE AND ${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
-        set(PLATFORM_DEPENENT_FILES)
-    else ()
-        set(PLATFORM_DEPENENT_FILES)
-    endif ()
-elseif (WIN32)
-    set(PLATFORM_DEPENENT_FILES)
-else ()
-    message(SEND_ERROR "Unknown OS")
-endif ()
+#if (UNIX)
+#    if (APPLE AND ${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+#        set(PLATFORM_DEPENENT_FILES)
+#    else ()
+#        set(PLATFORM_DEPENENT_FILES)
+#    endif ()
+#elseif (WIN32)
+#    set(PLATFORM_DEPENENT_FILES)
+#else ()
+#    message(SEND_ERROR "Unknown OS")
+#endif ()
 
 # Project will be made into an executable
 add_executable(${TEST_PROJECT_NAME}
     test_dummymain.cpp
-    ${PLATFORM_DEPENENT_FILES}
-    ${SRC_LOCATION}/dummymain.cpp ${INCLUDE_LOCATION}/Cpp-Template/dummymain.h
+#    ${PLATFORM_DEPENENT_FILES}
+    ${SRC_LOCATION}/dummymain.cpp ${INCLUDE_LOCATION}/dummymain.h
     )
 
 
@@ -49,7 +49,7 @@ target_include_directories(${TEST_PROJECT_NAME}
     PUBLIC
         $<BUILD_INTERFACE:${INCLUDE_LOCATION}>
         $<INSTALL_INTERFACE:include>
-        ${INCLUDE_LOCATION}/Cpp-Template
+        ${INCLUDE_LOCATION}
     PRIVATE
         ${SRC_LOCATION}
         ${SOURCE_DIR}/single_include/catch2

@@ -35,7 +35,7 @@ endif ()
 # Make a static library
 # As the submodule is not a library of its own, the files will be added
 add_library(DummyMain
-    src/dummymain.cpp include/Cpp-Template/dummymain.h
+    src/dummymain.cpp include/dummymain.h
     ${PLATFORM_DEPENENT_FILES}
     )
 
@@ -46,7 +46,7 @@ target_include_directories(DummyMain
     PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
     $<INSTALL_INTERFACE:include>
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/Cpp-Template
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
     PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/src
     )
